@@ -1,0 +1,133 @@
+.page-container{
+    display: flex;
+}
+
+.nav-bar-and-button{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 20vw;
+    min-width: 310px;
+    background-color: #EDE8E8;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.profile-name-photo img {
+    border-radius: 50%; 
+}
+
+.button-and-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
+
+.profile-name-photo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.profile-name-photo p {
+    font-size: xx-large;
+    margin: 0 10px; /* Adjust the spacing between the image and the name */
+}
+
+.nav-bar p {
+    font-size: x-large;
+}
+
+.nav-toggle-button {
+    display: flex;
+    justify-self: flex-end;
+    align-self: flex-start;
+    margin-top: 10px;
+    margin-right: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 30px;
+    transition: background-color 0.3s ease;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-toggle-button:hover {
+    background-color: #555;
+}
+
+
+
+
+.add-task-with-icon{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.my-projects{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-bar p {
+    margin-left: 20px;
+}
+
+.fa-solid.fa-square-plus {
+    color: #AC0909;
+}
+.fa-solid.fa-folder{
+    color: black;
+}
+
+.nav-bar{
+    padding-left: 5px;
+}
+
+.today{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.fa-solid.fa-calendar-day{
+    color: black;
+}
+
+.fa-solid.fa-group{
+    color: black;
+}
+
+#project-type{
+    padding-left: 30px;
+    color: #B16060;
+}
+
+#team-project-type{
+    padding-left: 30px;
+    color: #D5AD46;
+}
+
+.just-do-it{
+    width: 150px;
+    height: 150px;
+    align-self: center;
+}
+
+.hide-navbar{
+    display: none;
+}

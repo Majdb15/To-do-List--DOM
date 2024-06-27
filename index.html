@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To-Do-List-DOM</title>
+    <link rel="stylesheet" href="Styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+    <div class="page-container">
+        <div class="nav-bar-and-button">
+            <nav class="nav-bar" >
+                <div class="button-and-profile">
+                    <div class="profile-name-photo">
+                        <img width="80px" height="80px" alt="profile picture" src="Assets/profile-pic-round.jpg">
+                        <p>Majd</p>
+                    </div>   
+                </div>
+                <div class="add-task-with-icon">
+                    <a href="#"><i class="fa-solid fa-square-plus fa-3x"></i></a>
+                    <p>Add task</p>
+                </div>
+
+                <div class="today">
+                    <a id ="today" href="#"><i class="fa-solid fa-calendar-day fa-3x"></i></a>
+                    <p>Today</p>
+                </div>
+
+                <div class="my-projects">
+                    <a id="my-projects" href="#"><i class="fa-solid fa-folder fa-3x" ></i></a>
+                    <p>My Projects</p>
+                </div>
+
+                <div id="project-type">
+                        <p># Fitness</p>
+                        <p># Groceries</p>
+                        <p># Appointments</p>
+                </div>
+
+                <img class="just-do-it" src="Assets/just-do-it-noBG.png">
+
+                <div class="Team">
+                    <a id="Team" href="#"><i class="fa-solid fa-group fa-3x"></i></a>
+                </div>
+                <div id="team-project-type">
+                    <p># New Brand</p>
+                    <p># Website Update</p>
+                    <p># Product Roadmap</p>
+                    <p># Meeting Agenda</p>
+                </div>
+            </nav>
+            <button class="nav-toggle-button" aria-label="open-navigation">&#9776</button>
+        </div>
+
+        <div class="right-section"></div>
+    </div>
+    <script src="Scripts/script.js"></script>
 </body>
 </html>
