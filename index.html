@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="displayCurrentDate()">
     <div class="page-container">
         <div class="nav-bar-and-button">
-            <nav class="nav-bar" >
+            <nav class="nav-bar">
                 <div class="button-and-profile">
                     <div class="profile-name-photo">
                         <img width="80px" height="80px" alt="profile picture" src="Assets/profile-pic-round.jpg">
@@ -29,7 +29,7 @@
                     <p>Today</p>
                 </div>
 
-                <div class="my-projects">
+                <div class="my-projects-nav-bar">
                     <a id="my-projects" href="#"><i class="fa-solid fa-folder fa-3x" ></i></a>
                     <p>My Projects</p>
                 </div>
@@ -42,7 +42,7 @@
 
                 <img class="just-do-it" src="Assets/just-do-it-noBG.png">
 
-                <div class="Team">
+                <div class="Team-nav-bar">
                     <a id="Team" href="#"><i class="fa-solid fa-group fa-3x"></i></a>
                 </div>
                 <div id="team-project-type">
@@ -55,7 +55,62 @@
             <button class="nav-toggle-button" aria-label="open-navigation">&#9776</button>
         </div>
 
-        <div class="right-section"></div>
+        <div class="right-section">
+            <div class="date">
+                <p><b>Today</b> <span id="currentDate"></span></p>
+            </div>
+
+            <div class="my-projects">
+                <p id="my-projects-title">My Projects</p>
+                <hr>
+                <div class="my-project-add">
+                    <div class="project-name-icon">
+                        <label class="circle-checkbox">
+                            <input type="checkbox">
+                            <span></span>
+                        </label>
+                    <p class="text-to-line">Gym morning routine</p>
+                    <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
+                    </div>
+                    <div class="my-project-due-date">
+                        <p class="due-date">7:30 AM</p>
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="add-my-project">
+                <a href="#" id="add-personal-task"> <i class="fa-regular fa-square-plus fa-2x"></i></a>
+                <p id="add-task">Add task</p>
+            </div>
+
+            <div class="team-projects">
+                <p id="my-team-projects-title">Team Projects</p>
+                <hr>
+                <div class="my-team-project-add">
+                    <div class="team-project-name-icon">
+                        <label class="circle-checkbox">
+                            <input type="checkbox">
+                            <span></span>
+                        </label>
+                    <p class="text-to-line">Plan user research sessions</p>
+                    <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
+                    </div>
+                    <div class="my-team-project-due-date">
+                        <p class="due-date">2:00 PM</p>
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="add-my-team-project">
+                <a href="#" id="add-personal-task"> <i class="fa-regular fa-square-plus fa-2x"></i></a>
+                <p id="add-task">Add task</p>
+            </div>
+
+            </div>
+            
+        </div>
     </div>
     <script src="Scripts/script.js"></script>
 </body>

@@ -1,5 +1,7 @@
 .page-container{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .nav-bar-and-button{
@@ -9,6 +11,7 @@
     width: 20vw;
     min-width: 310px;
     background-color: #EDE8E8;
+    
 }
 
 .nav-bar {
@@ -77,7 +80,7 @@
     align-items: center;
 }
 
-.my-projects{
+.my-projects-nav-bar{
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -131,3 +134,207 @@
 .hide-navbar{
     display: none;
 }
+
+#currentDate{
+    font-size: 50px;
+}
+.date p{
+    font-size: 50px;
+}
+
+.my-projects p{
+    font-size: 25px;
+}
+
+#my-projects-title{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.team-projects p{
+    font-size: 25px;
+}
+#my-team-projects-title{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.right-section{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    width: 77vw;
+    flex-grow: 1;
+    transition: transform 0.3s ease;
+}
+.date{
+    display: flex;
+    align-self: center;
+    font-size: 50px;
+}
+
+
+.my-project-add{
+    display: flex;
+    flex-direction: column;
+}
+
+.my-team-project-add{
+    display: flex;
+    flex-direction: column;
+}
+
+.project-name-icon{
+    display: flex;
+    flex-direction: row;
+}
+
+.team-project-name-icon{
+    display: flex;
+    flex-direction: row;
+}
+
+.project-name-icon p{
+    display: flex;
+    margin-top: 10px;
+    padding-left: 20px;
+    flex-grow: 1;
+}
+.team-project-name-icon p{
+    display: flex;
+    margin-top: 10px;
+    padding-left: 20px;
+    flex-grow: 1;
+}
+
+
+.my-project-due-date p{
+    padding-left: 100px;
+    font-size: 20px;
+    padding-top: 0px;
+    margin: 2px;
+    color: green;
+}
+
+.my-team-project-due-date p{
+    padding-left: 100px;
+    font-size: 20px;
+    padding-top: 0px;
+    margin: 2px;
+    color: green;
+}
+
+.my-project-due-date{
+    display: flex;
+    flex-direction: row;
+    
+}
+.my-team-project-due-date{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.fa-regular.fa-clock{
+    margin-left: 10px;
+    padding-top: 0px;
+    font-size: 15px;
+    margin: 5px;
+}
+
+
+/* Hide the default checkbox */
+.circle-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+/* Style the custom checkbox */
+.circle-checkbox span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #000; /* Border color */
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+}
+
+/* Style the checked state */
+.circle-checkbox input[type="checkbox"]:checked + span {
+    background-color: #000; /* Fill color */
+}
+
+.circle-checkbox input[type="checkbox"]:checked + span::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 5px;
+    border: solid #fff;
+    border-width: 0 0 2px 2px;
+    transform: translate(-50%, -50%) rotate(-45deg); /* Correct orientation */
+}
+
+/* Style the text when the checkbox is checked */
+.circle-checkbox input[type="checkbox"]:checked + span + .text-to-line {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+/* Optional: Add some transition effects */
+.circle-checkbox span,
+.circle-checkbox input[type="checkbox"]:checked + span::before {
+    transition: all 0.3s ease;
+}
+
+
+.fa-solid.fa-trash-can{
+    display: flex;
+    padding-right: 40px;
+    color: black;
+    
+}
+
+.fa-solid.fa-trash-can:hover{
+    color: red;
+}
+
+#add-personal-task{
+    color: black;
+    text-decoration: none;
+}
+
+.add-my-project{
+    display: flex;
+    align-items: center;
+}
+.add-my-team-project{
+    display: flex;
+    align-items: center;
+}
+
+.add-my-project p{
+    font-size: 20px;
+    padding: 10px;
+}
+
+.add-my-team-project p{
+    font-size: 20px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 556px) {
+    .nav-bar-and-button{
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .nav-toggle-button{
+        transform:translateX(-655%);
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
