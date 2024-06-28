@@ -29,6 +29,23 @@ function displayCurrentDate() {
     var formattedDate = day + '-' + month + '-' + year;
     document.querySelector('#currentDate').textContent = formattedDate;
 }
+// Function to display today's time on the right section of the web page
+function displayCurrentTime() {
+    const currentTime = new Date();
+    const hours = String(currentTime.getHours()).padStart(2, '0');
+    const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+    const seconds = String(currentTime.getSeconds()).padStart(2, '0');
+    const formattedTime = hours + ':' + minutes + ':' + seconds;
+    document.querySelector('#currentTime').textContent = formattedTime;
+}
+// Update the time every second
+setInterval(displayCurrentTime, 1000);
+
+//handler on loading DOM for both date and time
+document.addEventListener('DOMContentLoaded', function() {
+    displayCurrentDate();
+    displayCurrentTime(); // Initial call to display time immediately
+});
 
 // Function to make the text decoration of marked to-do to line-through
 document.addEventListener('change', function(event) {
@@ -65,15 +82,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent default form submission
+        console.log(document.querySelector('#dueTime').value)
         const task = {
             taskID: 'to-doo' + (i++),
             taskName: document.querySelector('#taskName').value,
             dueDate: document.querySelector('#dueDate').value,
+            dueTime: document.querySelector('#dueTime').value,
             assigneeName: document.querySelector('#assigneeName').value,
             taskType: document.querySelector('#taskType').value
         };
         fillTaskList(task);
         savetoDos(task);
+        checkOverdueTasks();
         form.reset();
     });
 
@@ -92,6 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="my-project-due-date">
                         <p class="due-date">${task.dueDate}</p>
+                        <i class="fa-solid fa-calendar-day fa"></i>
+                        <p class="due-time">${task.dueTime} PM</p>
                         <i class="fa-regular fa-clock"></i>
                     </div>
                 </div>
@@ -113,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 deleteTask(containerId);
             });
         });
+        //checkOverdueTasks();
     }
 
     function deleteTask(containerID) {
@@ -121,6 +144,76 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteToDos(containerID.replace('container-', ''));
         }
     }
+
+    function checkOverdueTasks() {
+        const currentDateTime = new Date();
+    
+        // Check team projects
+        const teamTaskContainers = document.querySelectorAll('.my-team-project-due-date');
+        for (let i = 0; i < teamTaskContainers.length; i++) {
+            const container = teamTaskContainers[i];
+            const dueDateElement = container.querySelector('.due-date');
+            const dueTimeElement = container.querySelector('.due-time');
+    
+            if (dueDateElement && dueTimeElement) {
+                const dueDateText = dueDateElement.textContent;
+                const dueTimeText = dueTimeElement.textContent;
+    
+                // Extract date and time components
+                const [dateYear, dateMonth, dateDay] = dueDateText.split('-');
+                const [timeHours, timeMinutes] = dueTimeText.match(/\d+/g);
+    
+                // Create a new Date object
+                const dueDateTime = new Date(dateYear, dateMonth - 1, dateDay, timeHours, timeMinutes);
+    
+                // Compare current time with due time
+                if (currentDateTime.getTime() > dueDateTime.getTime()) {
+                    dueDateElement.style.color = 'red';
+                    dueTimeElement.style.color = 'red';
+                } else {
+                    dueDateElement.style.color = ''; // Reset color if not overdue
+                    dueTimeElement.style.color = '';
+                }
+            } else {
+                console.error('Error: Missing due-date or due-time element in team task container');
+            }
+        }
+    
+        // Check self projects
+        const selfTaskContainers = document.querySelectorAll('.my-project-due-date');
+        for (let i = 0; i < selfTaskContainers.length; i++) {
+            const container = selfTaskContainers[i];
+            const dueDateElement = container.querySelector('.due-date');
+            const dueTimeElement = container.querySelector('.due-time');
+    
+            if (dueDateElement && dueTimeElement) {
+                const dueDateText = dueDateElement.textContent;
+                const dueTimeText = dueTimeElement.textContent;
+    
+                // Extract date and time components
+                const [dateYear, dateMonth, dateDay] = dueDateText.split('-');
+                const [timeHours, timeMinutes] = dueTimeText.match(/\d+/g);
+    
+                // Create a new Date object
+                const dueDateTime = new Date(dateYear, dateMonth - 1, dateDay, timeHours, timeMinutes);
+    
+                // Compare current time with due time
+                if (currentDateTime.getTime() > dueDateTime.getTime()) {
+                    dueDateElement.style.color = 'red';
+                    dueTimeElement.style.color = 'red';
+                } else {
+                    dueDateElement.style.color = ''; // Reset color if not overdue
+                    dueTimeElement.style.color = '';
+                }
+            } else {
+                console.error('Error: Missing due-date or due-time element in self task container');
+            }
+        }
+    }
+    
+    // Run checkOverdueTasks initially and every minute
+    checkOverdueTasks();
+    setInterval(checkOverdueTasks, 60000);
 
     //LOCAL STORAGE
     function loadTasksFromLocalStorage() {

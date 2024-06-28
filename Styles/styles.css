@@ -455,6 +455,11 @@ a:hover{
     background-color: #EDCFCF;
 }
 
+.fa-solid.fa-calendar-day{
+    padding-left: 3px;
+    padding-top: 6px;
+}
+
 @media screen and (max-width: 556px) {
     .nav-bar-and-button{
         background-color: white;
@@ -467,8 +472,6 @@ a:hover{
         flex-wrap: wrap;
     }
 }
-
-
 
 @media screen and (max-width: 1154px) {
     .page-container{

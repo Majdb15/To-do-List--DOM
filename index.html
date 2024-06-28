@@ -59,7 +59,7 @@
 
         <div class="right-section">
             <div class="date" id="today-section">
-                <p><b>Today</b> <span id="currentDate"></span></p>
+                <p><b>Today</b> <span id="currentDate"></span> <span id="currentTime"></span></p>
             </div>
 
             <div class="my-projects" id="My-projects">
@@ -75,7 +75,9 @@
                         <a class="trash-task"><i class="fa-solid fa-trash-can fa-2x"></i></a>
                     </div>
                     <div class="my-project-due-date">
-                        <p class="due-date">7:30 AM</p>
+                        <p class="due-date">2024-06-28</p>
+                        <i class="fa-solid fa-calendar-day fa"></i>
+                        <p class="due-time">7:30 AM</p>
                         <i class="fa-regular fa-clock"></i>
                     </div>
                 </div>
@@ -99,7 +101,9 @@
                         <a class="trash-task"><i class="fa-solid fa-trash-can fa-2x"></i></a>
                     </div>
                     <div class="my-team-project-due-date">
-                        <p class="due-date">2:00 PM</p>
+                        <p class="due-date">2024-06-28</p>
+                        <i class="fa-solid fa-calendar-day fa"></i>
+                        <p class="due-time">2:00 PM</p>
                         <i class="fa-regular fa-clock"></i>
                     </div>
                 </div>
@@ -120,12 +124,15 @@
         <div class="popup-box">
             <h2 style="color: rgb(128, 133, 128);">Add Task</h2>
             <form class="form-container">
-                <label class="form-label" for="task-name"> Task name
-                </label>
+
+                <label class="form-label" for="task-name"> Task name</label>
                 <input class="form-input" type="text" placeholder="Enter Your task name" id="taskName" name="task-name" required>
 
-                <label class="form-label" for="Due-Date">Due-Time:</label>
-                <input class="form-input" type="time" placeholder="Enter your task's Due-Date" id="dueDate" name="Due-Date" required>
+                <label class="form-label" for="Due-Date">Due-Date:</label>
+                <input class="form-input" type="date" placeholder="Enter your task's Due-Date" id="dueDate" name="Due-Date" required>
+
+                <label class="form-label" for="Due-Time">Due-Time:</label>
+                <input class="form-input" type="time" placeholder="Enter your task's Due-time" id="dueTime" name="Due-Time" required>
 
                 <label class="form-label" for="task-assignee">Assignee name</label>
                 <input class="form-input" type="text" placeholder="me/john/sarah" id="assigneeName" name="task-assignee" required>
@@ -136,9 +143,8 @@
                     <option value="team">Team task</option>
                 </select>
 
-                <button class="btn-submit" type="submit">
-                    Add
-                </button>
+                <button class="btn-submit" type="submit">Add</button>
+                    
             </form>
 
             <button class="btn-close-popup" onclick="togglePopup()">
