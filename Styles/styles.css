@@ -451,6 +451,10 @@ a:hover{
     cursor: pointer;
 }
 
+.onClickToggleBG{
+    background-color: #EDCFCF;
+}
+
 
 @media screen and (max-width: 556px) {
     .nav-bar-and-button{
