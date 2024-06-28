@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,8 @@
     <link rel="stylesheet" href="Styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </head>
+
 <body onload="displayCurrentDate()">
     <div class="page-container">
         <div class="nav-bar-and-button">
@@ -17,33 +18,34 @@
                     <div class="profile-name-photo">
                         <img width="80px" height="80px" alt="profile picture" src="Assets/profile-pic-round.jpg">
                         <p>Majd</p>
-                    </div>   
+                    </div>
                 </div>
                 <div class="add-task-with-icon">
-                    <a href="#"><i class="fa-solid fa-square-plus fa-3x"></i></a>
+                    <a onclick="togglePopup()" id="Add-task-both"><i class="fa-solid fa-square-plus fa-3x"></i></a>
                     <p>Add task</p>
                 </div>
 
                 <div class="today">
-                    <a id ="today" href="#"><i class="fa-solid fa-calendar-day fa-3x"></i></a>
+                    <a id="today" href="#"><i class="fa-solid fa-calendar-day fa-3x"></i></a>
                     <p>Today</p>
                 </div>
 
                 <div class="my-projects-nav-bar">
-                    <a id="my-projects" href="#"><i class="fa-solid fa-folder fa-3x" ></i></a>
+                    <a id="my-projects" href="#"><i class="fa-solid fa-folder fa-3x"></i></a>
                     <p>My Projects</p>
                 </div>
 
                 <div id="project-type">
-                        <p># Fitness</p>
-                        <p># Groceries</p>
-                        <p># Appointments</p>
+                    <p># Fitness</p>
+                    <p># Groceries</p>
+                    <p># Appointments</p>
                 </div>
 
                 <img class="just-do-it" src="Assets/just-do-it-noBG.png">
 
                 <div class="Team-nav-bar">
                     <a id="Team" href="#"><i class="fa-solid fa-group fa-3x"></i></a>
+                    <p>Team</p>
                 </div>
                 <div id="team-project-type">
                     <p># New Brand</p>
@@ -69,8 +71,8 @@
                             <input type="checkbox">
                             <span></span>
                         </label>
-                    <p class="text-to-line">Gym morning routine</p>
-                    <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
+                        <p class="text-to-line">Gym morning routine</p>
+                        <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
                     </div>
                     <div class="my-project-due-date">
                         <p class="due-date">7:30 AM</p>
@@ -80,7 +82,7 @@
                 <hr>
             </div>
             <div class="add-my-project">
-                <a href="#" id="add-personal-task"> <i class="fa-regular fa-square-plus fa-2x"></i></a>
+                <a onclick="togglePopup()" id="add-personal-task"> <i class="fa-regular fa-square-plus fa-2x"></i></a>
                 <p id="add-task">Add task</p>
             </div>
 
@@ -93,8 +95,8 @@
                             <input type="checkbox">
                             <span></span>
                         </label>
-                    <p class="text-to-line">Plan user research sessions</p>
-                    <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
+                        <p class="text-to-line">Plan user research sessions</p>
+                        <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
                     </div>
                     <div class="my-team-project-due-date">
                         <p class="due-date">2:00 PM</p>
@@ -102,16 +104,50 @@
                     </div>
                 </div>
                 <hr>
+
             </div>
             <div class="add-my-team-project">
-                <a href="#" id="add-personal-task"> <i class="fa-regular fa-square-plus fa-2x"></i></a>
+                <a onclick="togglePopup()" id="add-teammate-task"> <i class="fa-regular fa-square-plus fa-2x"></i></a>
                 <p id="add-task">Add task</p>
             </div>
 
-            </div>
-            
+        </div>
+
+    </div>
+    </div>
+
+    <div id="popupOverlay" class="overlay-container">
+        <div class="popup-box">
+            <h2 style="color: rgb(128, 133, 128);">Add Task</h2>
+            <form class="form-container">
+                <label class="form-label" for="task-name"> Task name
+                </label>
+                <input class="form-input" type="text" placeholder="Enter Your task name" id="taskName" name="task-name" required>
+
+                <label class="form-label" for="Due-Date">Due-Time:</label>
+                <input class="form-input" type="time" placeholder="Enter your task's Due-Date" id="dueDate" name="Due-Date" required>
+
+                <label class="form-label" for="task-assignee">Assignee name</label>
+                <input class="form-input" type="text" placeholder="me/john/sarah" id="assigneeName" name="task-assignee" required>
+
+                <label class="form-label" for="task-type">Task Type</label>
+                <select class="form-input" type="text" placeholder="Choose your task type" id="taskType" name="task-type" required>
+                    <option value="self">Self task</option>
+                    <option value="team">Team task</option>
+                </select>
+
+                <button class="btn-submit" type="submit">
+                    Add
+                </button>
+            </form>
+
+            <button class="btn-close-popup" onclick="togglePopup()">
+                Close
+            </button>
         </div>
     </div>
+
     <script src="Scripts/script.js"></script>
 </body>
+
 </html>

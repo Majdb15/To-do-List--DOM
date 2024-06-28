@@ -14,8 +14,8 @@ threeBarsButton.addEventListener('click', function() {
   } else {
     navBar.style.transform = 'translateX(-100%)';
     threeBarsButton.style.transform = 'translateX(-655%)';
-    navAndButtonContainer.style.backgroundColor='white'
-    navAndButtonContainer.style.width='1vw'
+    navAndButtonContainer.style.backgroundColor='#d2d9dd'
+    navAndButtonContainer.style.width='15vw'
     rightSection.style.width='81vw';
   }
 });
@@ -48,3 +48,66 @@ for (let i = 0; i < toDoCheckBox.length; i++) {
         }
     });
 }
+
+
+//now let's work on adding the task
+function togglePopup() { 
+  const overlay = document.getElementById('popupOverlay'); 
+  overlay.classList.toggle('show');
+}
+
+const submitTask = document.querySelector('.btn-submit');
+const form = document.querySelector('.form-container');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        const task = {
+            taskName: document.querySelector('#taskName').value,
+            dueDate: document.querySelector('#dueDate').value,
+            assigneeName: document.querySelector('#assigneeName').value,
+            taskType: document.querySelector('#taskType').value
+        };
+        fillTaskList(task);
+        form.reset();
+    });
+      
+    function fillTaskList(task){
+      console.log(task)
+      if(task.taskType=='self'){
+        const selfProjects= document.querySelector('.my-projects');
+        selfProjects.innerHTML+=`<div class="my-project-add">
+        <div class="project-name-icon">
+            <label class="circle-checkbox">
+                <input type="checkbox">
+                <span></span>
+            </label>
+            <p class="text-to-line">${task.taskName}</p>
+            <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
+        </div>
+        <div class="my-project-due-date">
+            <p class="due-date">${task.dueDate}</p>
+            <i class="fa-regular fa-clock"></i>
+        </div>
+    </div>
+    <hr>`
+      }
+      else if(task.taskType=='team'){
+        const teamProjects = document.querySelector('.team-projects');
+        teamProjects.innerHTML+=`<div class="my-team-project-add">
+        <div class="team-project-name-icon">
+            <label class="circle-checkbox">
+                <input type="checkbox">
+                <span></span>
+            </label>
+            <p class="text-to-line">"${task.taskName}"</p>
+            <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
+        </div>
+        <div class="my-team-project-due-date">
+            <p class="due-date">"${task.dueDate}"</p>
+            <i class="fa-regular fa-clock"></i>
+        </div>
+    </div>
+    <hr>`
+      }
+    }
+
