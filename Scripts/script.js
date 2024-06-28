@@ -13,10 +13,10 @@ threeBarsButton.addEventListener('click', function() {
         navAndButtonContainer.style.width = '20vw';
     } else {
         navBar.style.transform = 'translateX(-100%)';
-        threeBarsButton.style.transform = 'translateX(-655%)';
+        threeBarsButton.style.transform = 'translateX(-635%)';
         navAndButtonContainer.style.backgroundColor = '#d2d9dd';
         navAndButtonContainer.style.width = '15vw';
-        rightSection.style.width = '81vw';
+        rightSection.style.width = '70vw';
     }
 });
 

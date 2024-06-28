@@ -455,11 +455,34 @@ a:hover{
     background-color: #EDCFCF;
 }
 
-
 @media screen and (max-width: 556px) {
     .nav-bar-and-button{
         background-color: white;
         display: flex;
+        flex-wrap: wrap;
+    }
+    .nav-toggle-button{
+        transform:translateX(-655%);
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+
+
+@media screen and (max-width: 1154px) {
+    .page-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .nav-bar-and-button{
+        background-color: white;
+        width: 100vw;
+        display: flex;
+        flex-grow: 1;
         flex-wrap: wrap;
     }
     .nav-toggle-button{
