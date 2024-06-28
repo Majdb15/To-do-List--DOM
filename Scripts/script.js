@@ -56,58 +56,64 @@ function togglePopup() {
   overlay.classList.toggle('show');
 }
 
-const submitTask = document.querySelector('.btn-submit');
-const form = document.querySelector('.form-container');
+document.addEventListener('DOMContentLoaded', function() {
+  let i = 0;
+  const form = document.querySelector('.form-container');
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        const task = {
-            taskName: document.querySelector('#taskName').value,
-            dueDate: document.querySelector('#dueDate').value,
-            assigneeName: document.querySelector('#assigneeName').value,
-            taskType: document.querySelector('#taskType').value
-        };
-        fillTaskList(task);
-        form.reset();
-    });
+  form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      const task = {
+          taskID: 'to-doo' + (i++),
+          taskName: document.querySelector('#taskName').value,
+          dueDate: document.querySelector('#dueDate').value,
+          assigneeName: document.querySelector('#assigneeName').value,
+          taskType: document.querySelector('#taskType').value
+      };
+      fillTaskList(task);
+      form.reset();
+  });
+
+  function fillTaskList(task) {
+      console.log(task);
+      let taskHTML = `
+          <div class="task-container" id="container-${task.taskID}">
+              <div class="${task.taskType === 'self' ? 'my-project-add' : 'my-team-project-add'}" id="${task.taskID}">
+                  <div class="project-name-icon">
+                      <label class="circle-checkbox">
+                          <input type="checkbox">
+                          <span></span>
+                      </label>
+                      <p class="text-to-line">${task.taskName}</p>
+                      <a class="trash-task"><i class="fa-solid fa-trash-can fa-2x"></i></a>
+                  </div>
+                  <div class="my-project-due-date">
+                      <p class="due-date">${task.dueDate}</p>
+                      <i class="fa-regular fa-clock"></i>
+                  </div>
+              </div>
+              <hr>
+          </div>`;
       
-    function fillTaskList(task){
-      console.log(task)
-      if(task.taskType=='self'){
-        const selfProjects= document.querySelector('.my-projects');
-        selfProjects.innerHTML+=`<div class="my-project-add">
-        <div class="project-name-icon">
-            <label class="circle-checkbox">
-                <input type="checkbox">
-                <span></span>
-            </label>
-            <p class="text-to-line">${task.taskName}</p>
-            <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
-        </div>
-        <div class="my-project-due-date">
-            <p class="due-date">${task.dueDate}</p>
-            <i class="fa-regular fa-clock"></i>
-        </div>
-    </div>
-    <hr>`
+      if (task.taskType === 'self') {
+          const selfProjects = document.querySelector('.my-projects');
+          selfProjects.innerHTML += taskHTML;
+      } else if (task.taskType === 'team') {
+          const teamProjects = document.querySelector('.team-projects');
+          teamProjects.innerHTML += taskHTML;
       }
-      else if(task.taskType=='team'){
-        const teamProjects = document.querySelector('.team-projects');
-        teamProjects.innerHTML+=`<div class="my-team-project-add">
-        <div class="team-project-name-icon">
-            <label class="circle-checkbox">
-                <input type="checkbox">
-                <span></span>
-            </label>
-            <p class="text-to-line">"${task.taskName}"</p>
-            <a href="$"><i class="fa-solid fa-trash-can fa-2x"></i></a>
-        </div>
-        <div class="my-team-project-due-date">
-            <p class="due-date">"${task.dueDate}"</p>
-            <i class="fa-regular fa-clock"></i>
-        </div>
-    </div>
-    <hr>`
-      }
-    }
 
+      // Add event listener for newly added trash can icon
+      document.querySelectorAll('.trash-task').forEach(trashIcon => {
+          trashIcon.addEventListener('click', function() {
+              const containerId = this.closest('.task-container').id;
+              deleteTask(containerId);
+          });
+      });
+  }
+
+  function deleteTask(containerID) {
+      if (confirm("Are you sure to delete?")) {
+          document.getElementById(containerID).remove();
+      }
+  }
+});
